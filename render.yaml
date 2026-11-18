@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: internship-board-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    disk:
+      name: internship-api-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DB_PATH
+        value: /var/data/internships.db

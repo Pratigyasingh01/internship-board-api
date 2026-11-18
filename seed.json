@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Frontend Developer Intern",
+    "company": "Northstar Labs",
+    "domain": "Technology",
+    "location": "Remote, India",
+    "work_mode": "Remote",
+    "employment_type": "Part-time",
+    "duration_months": 3,
+    "stipend_inr": 8000,
+    "description": "Build accessible interface components and learn frontend development with a supportive team.",
+    "application_url": "https://example.com/apply/frontend"
+  },
+  {
+    "title": "UI/UX Design Intern",
+    "company": "Studio Fern",
+    "domain": "Design",
+    "location": "Bengaluru, India",
+    "work_mode": "Hybrid",
+    "employment_type": "Full-time",
+    "duration_months": 2,
+    "stipend_inr": 10000,
+    "description": "Support user research, wireframes, and interface design for digital products.",
+    "application_url": "https://example.com/apply/design"
+  },
+  {
+    "title": "Digital Marketing Intern",
+    "company": "Goodfolk",
+    "domain": "Marketing",
+    "location": "Remote, India",
+    "work_mode": "Remote",
+    "employment_type": "Part-time",
+    "duration_months": 3,
+    "stipend_inr": 6000,
+    "description": "Plan content calendars, review campaign performance, and support social media projects.",
+    "application_url": "https://example.com/apply/marketing"
+  },
+  {
+    "title": "Data Analyst Intern",
+    "company": "Metric Works",
+    "domain": "Technology",
+    "location": "Pune, India",
+    "work_mode": "On-site",
+    "employment_type": "Full-time",
+    "duration_months": 6,
+    "stipend_inr": 12000,
+    "description": "Prepare datasets, build reports, and communicate findings to stakeholders.",
+    "application_url": "https://example.com/apply/data"
+  },
+  {
+    "title": "Business Development Intern",
+    "company": "Orbit Ventures",
+    "domain": "Business",
+    "location": "Delhi, India",
+    "work_mode": "Hybrid",
+    "employment_type": "Full-time",
+    "duration_months": 3,
+    "stipend_inr": 9000,
+    "description": "Research partners, organize outreach information, and assist the growth team.",
+    "application_url": "https://example.com/apply/business"
+  }
+]

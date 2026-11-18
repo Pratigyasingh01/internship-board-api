@@ -1,0 +1,13 @@
+const test=require("node:test"),assert=require("node:assert/strict"),fs=require("node:fs"),os=require("node:os"),path=require("node:path"),http=require("node:http");
+const dbPath=path.join(os.tmpdir(),`internship-api-${process.pid}.db`);process.env.DB_PATH=dbPath;
+const {app,db}=require("./server");let server,base,id;
+const valid={title:"QA Intern",company:"Test Studio",domain:"Technology",location:"Remote, India",work_mode:"Remote",employment_type:"Part-time",duration_months:3,stipend_inr:5000,description:"Help test web applications and document reproduction steps.",application_url:"https://example.com/apply"};
+test.before(async()=>{server=http.createServer(app);await new Promise(r=>server.listen(0,r));base=`http://127.0.0.1:${server.address().port}`;});
+test.after(async()=>{await new Promise(r=>server.close(r));db.close();for(const s of ["","-shm","-wal"])try{fs.unlinkSync(dbPath+s)}catch{}});
+test("health returns 200",async()=>{const r=await fetch(base+"/health");assert.equal(r.status,200);});
+test("create returns 201",async()=>{const r=await fetch(base+"/api/internships",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(valid)});assert.equal(r.status,201);id=(await r.json()).data.id;});
+test("list returns pagination metadata",async()=>{const r=await fetch(base+"/api/internships?page=1&limit=5");const j=await r.json();assert.equal(r.status,200);assert.equal(j.meta.page,1);});
+test("detail returns record",async()=>{const r=await fetch(base+`/api/internships/${id}`);assert.equal(r.status,200);});
+test("patch updates field",async()=>{const r=await fetch(base+`/api/internships/${id}`,{method:"PATCH",headers:{"content-type":"application/json"},body:JSON.stringify({stipend_inr:7000})});assert.equal((await r.json()).data.stipend_inr,7000);});
+test("invalid field returns 422",async()=>{const r=await fetch(base+"/api/internships",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({...valid,domain:"Other"})});assert.equal(r.status,422);});
+test("delete removes record",async()=>{const r=await fetch(base+`/api/internships/${id}`,{method:"DELETE"});assert.equal(r.status,200);const d=await fetch(base+`/api/internships/${id}`);assert.equal(d.status,404);});
